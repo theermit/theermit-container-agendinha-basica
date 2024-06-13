@@ -1,0 +1,29 @@
+version: '3.8'  # Versão do Docker Compose
+
+services:
+  web:
+    build: web
+    ports:
+      - "80:80"
+    depends_on:
+      - db-pg
+    networks:
+      - agendinha-network
+  db-pg:
+    image: postgres:16.3
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "5432:5432"
+    volumes:
+      - agendinha_volume:/var/lib/postgresql/data
+    networks:
+      - agendinha-network
+    
+volumes:
+  agendinha_volume:
+
+networks:
+  agendinha-network:

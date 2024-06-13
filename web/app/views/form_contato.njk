@@ -1,0 +1,42 @@
+{% extends 'template.njk' %}
+
+{% if acao == 'incluir_contato' %}
+{% set titulo = "novo contato" %}
+{% set readonly = "" %}
+{% endif %}
+{% if acao == 'editar_contato' %}
+{% set titulo = "editar contato" %}
+{% set readonly = "" %}
+{% endif %}
+{% if acao == 'apagar_contato' %}
+{% set titulo = "apagar contato" %}
+{% set readonly = "readonly" %}
+{% endif %}
+{% block title %}{{ titulo }}{% endblock %}
+{% block content %}
+<h1 class="text-center">{{ titulo }}</h1>
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <form method="post" action="/{{ acao }}">
+            <input type="hidden" name="id" value="{{ contato.id }}" >
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" name="nome" id="nome" value="{{ contato.nome }}" {{ readonly }} required>
+            </div>
+            <div class="form-group">
+                <label for="nome">Telefone</label>
+                <input type="text" class="form-control"  name="telefone" id="telefone" value="{{ contato.telefone }}" {{ readonly }} required>
+            </div>
+            <p  class="text-center">
+                <a href="/lista" class="btn btn-primary">Voltar</a>
+                {% if acao == 'incluir_contato' or acao == 'editar_contato' %}
+                    <button  class="btn btn-danger" type="reset">Limpar</button>
+                    <button  class="btn btn-primary"  type="submit">Salvar</button>
+                {% else %}
+                    <button   class="btn btn-danger" type="submit">Apagar</button>
+                {% endif %}
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}
