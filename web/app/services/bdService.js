@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
 const sequelize = new Sequelize( 'mydb', 'postgres', '123', {
-    host: 'db-pg',
+    host: 'db-pg',//service
     dialect: 'postgres'
   });
 

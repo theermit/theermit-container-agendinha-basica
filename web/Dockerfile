@@ -11,7 +11,7 @@ COPY app .
 RUN npm install
 
 # Expor a porta que a aplicação irá rodar
-EXPOSE 80
+EXPOSE 3000
 
 # Comando para rodar a aplicação
 CMD ["node", "index.js"]
