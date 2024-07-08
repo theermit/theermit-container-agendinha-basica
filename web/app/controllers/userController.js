@@ -50,6 +50,8 @@ module.exports = {
                     email: req.body.email
                 }
             });
+            let email_jah_cadastrado = email != null;
+            return res.status(200).json({email_jah_cadastrado});
         }
         catch(err)
         {
