@@ -28,7 +28,7 @@ router.delete("/apagar_contato/:contato_id", verificarTokenMiddleware, contatoCo
 
 //usuario
 
-router.post("/consultar_email", userController.consultar_email);
+router.post("/consultaremail", userController.consultar_email);
 
 router.post("/login", logar_middleware,  userController.logar);
 
